@@ -1,0 +1,32 @@
+<div class="alert alert-warning" role="alert" *ngFor="let item of items">
+    {{item.name}} - {{item.id}}
+    <div class="float-end" (click)="eliminar(item)">
+        <i class="bi bi-trash"></i>
+    </div>
+    <div class="float-end mx-3" (click)="editar(item)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="bi bi-pencil"></i>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar: {{editarItem.name}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="agregarItemEditado()">
+                <input type="text" name="name" placeholder="Ingresa tarea" 
+                    class="form-control" 
+                    [(ngModel)]="editarItem.name">
+                <button class="btn btn-warning mt-3" type="submit">Editar</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
